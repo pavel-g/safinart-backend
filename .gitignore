@@ -1,0 +1,7 @@
+/target
+/\.vscode
+/db.mv.db
+/images
+/images_preview
+/\.idea
+/tmp
