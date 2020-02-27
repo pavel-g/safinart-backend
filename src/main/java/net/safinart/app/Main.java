@@ -49,7 +49,7 @@ public class Main {
     private NewItemService newItemService;
 
     @Autowired
-    private ImageService ImageService;
+    private ImageService imageService;
 
     @Autowired
     private AuthService authService;
@@ -83,7 +83,7 @@ public class Main {
 
     @GetMapping(path = "/images/{name}", produces = MediaType.IMAGE_JPEG_VALUE)
     @ResponseBody byte[] getImage(@PathVariable("name") String name) throws IOException {
-        var imageFullName = this.ImageService.getImageFullPath(name);
+        var imageFullName = this.imageService.getImageFullPath(name);
         var in = new FileInputStream(imageFullName);
         var data = in.readAllBytes();
         in.close();
@@ -92,7 +92,7 @@ public class Main {
 
     @GetMapping(path = "/images_preview/{name}", produces = MediaType.IMAGE_JPEG_VALUE)
     @ResponseBody byte[] getImagePreview(@PathVariable("name") String name) throws IOException {
-        var imageFullName = this.ImageService.getPreviewImageFullPath(name);
+        var imageFullName = this.imageService.getPreviewImageFullPath(name);
         var in = new FileInputStream(imageFullName);
         var data = in.readAllBytes();
         in.close();
