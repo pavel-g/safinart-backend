@@ -21,6 +21,8 @@ public class Toy {
         toy.id = item.getId();
         toy.images.orig = item.getImage();
         toy.title = item.getTitle();
+        toy.pos.lat = item.getLat();
+        toy.pos.lon = item.getLon();
         return toy;
     }
     
