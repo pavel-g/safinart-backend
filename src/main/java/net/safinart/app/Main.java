@@ -73,7 +73,6 @@ public class Main {
             throws IOException, NotAuthorized, SessionDead
     {
         this.authService.checkToken(sessionId);
-        this.logger.debug("add new item: " + newItem);
         this.newItemService.setNewItem(newItem);
         this.newItemService.saveFile();
         this.newItemService.saveItem();

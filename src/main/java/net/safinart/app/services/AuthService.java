@@ -62,6 +62,7 @@ public class AuthService {
             );
             return existsSession.get();
         }
+        this.sessions.remove(existsSession.get());
         var newSession = this.createNewSession(name, password);
         this.logger.info(
             "Создана новая сессия для {} (id={})",
@@ -96,6 +97,7 @@ public class AuthService {
     
     protected void checkSessionLifetime(Session s) throws SessionDead {
         if (this.isSessionDead(s)) {
+            this.sessions.remove(s);
             throw new SessionDead("Сессия истекла");
         }
     }
@@ -110,10 +112,6 @@ public class AuthService {
         var s = new Session(name, password);
         this.sessions.add(s);
         return s;
-    }
-    
-    protected void removeSession(Session s) {
-        this.sessions.remove(s);
     }
     
 }
